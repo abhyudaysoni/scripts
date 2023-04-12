@@ -1,21 +1,30 @@
 const path = require('path');
 const fs = require('fs');
 
-const folderPath = '../../temp/daredevil'; //set folder path here
+//set full folder path here
+const folderPath = 'M:/videos/series/Daredevil/Season - 1';
+
 const files = fs.readdirSync(folderPath); //reading files here
 
-for (let index = 0; index < files.length; index++) {
-	const file = files[index];
-	const fileInfo = path.parse(file);
+try {
+	for (let index = 0; index < files.length; index++) {
+		const file = files[index];
+		const fileInfo = path.parse(file);
 
-	// new file name
-	const newName = `Episode - ${index + 1}`;
-	// new file name
+		// new file name
+		const newName = `${index}`;
+		// new file name
 
-	const newFullName = `${newName}${fileInfo.ext}`;
-	const oldPath = path.join(__dirname, folderPath, file);
-	const newPath = path.join(__dirname, folderPath, newFullName);
+		const newFullName = `${newName}${fileInfo.ext}`;
+		const oldPath = path.join(folderPath, file);
+		const newPath = path.join(folderPath, newFullName);
 
-	//rename function
-	// fs.renameSync(oldPath, newPath);
+		console.log('oldPath', oldPath);
+		console.log('newPath', newPath);
+
+		//rename function
+		// fs.renameSync(oldPath, newPath);
+	}
+} catch (e) {
+	console.log(e);
 }
